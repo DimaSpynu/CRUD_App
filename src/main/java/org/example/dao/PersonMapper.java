@@ -10,7 +10,7 @@ public class PersonMapper implements RowMapper<Person> {
     public Person mapRow(ResultSet resultSet, int i) throws SQLException {
         Person person = new Person();
 
-        person.setId(resultSet.getInt("id"));
+        person.setId(resultSet.getLong("id"));
         person.setName(resultSet.getString("name"));
         person.setAge(resultSet.getInt("age"));
         person.setEmail(resultSet.getString("email"));

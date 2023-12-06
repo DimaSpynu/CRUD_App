@@ -5,13 +5,12 @@
     <title>Product Details</title>
 </head>
 <body>
-<p th:text="${product.getName() + ', ' + product.getPrice()}">VALUE</p>
-<p th:text="${'Description: ' + product.getDescription()}">VALUE</p>
-<p th:text="${product.getId()}">VALUE</p>
-<p th:href="@{/products/{id}/edit(id=${product.getId()})}">EDIT</p>
-
-<form th:method="DELETE" th:action="@{/products/{id}(id=${product.getId()})}">
-    <input type="submit" value="Delete"/>
-</form>
+<h1>Product Details</h1>
+<p th:text="${product.name + ', ' + product.price}"></p>
+<p th:text="${'Description: ' + product.description}"></p>
+<a th:href="@{/products/edit/{id}(id=${product.id})}">Edit</a>
+<a th:href="@{/products/delete/{id}(id=${product.id})}">Delete</a>
+<a th:href="@{/products/list}">Back to List</a>
+<a th:href="@{/cart/add/{id}(id=${product.id})}">Add to Cart</a>
 </body>
 </html>

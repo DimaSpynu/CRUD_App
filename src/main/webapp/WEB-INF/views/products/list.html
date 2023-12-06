@@ -2,18 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Product-List</title>
+    <title>Product List</title>
 </head>
 <body>
-
-<br/>
-<hr/>
-
+<h1>Product List</h1>
 <div th:each="product : ${products}">
-    <a th:href="@{/products/{id}(id=${product.getId()})}"
-       th:text="${product.getName() + ', ' + product.getPrice()}">person</a>
+    <p th:text="${product.name + ', ' + product.price}"></p>
+    <a th:href="@{/products/show/{id}(id=${product.id})}">Details</a>
+    <hr/>
 </div>
-
-
+<a th:href="@{/products/new}">New Product</a>
 </body>
 </html>

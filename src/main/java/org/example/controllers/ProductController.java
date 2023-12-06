@@ -28,12 +28,13 @@ public class ProductController {
     @GetMapping("/show/{id}")
     public String showProduct(@PathVariable("id") Long id, Model model) {
         Product product = productDAO.show(id);
-        model.addAttribute("products", product);
+        model.addAttribute("product", product);
         return "products/show";
     }
 
     @GetMapping("/new")
-    public String newProduct() {
+    public String newProductForm(Model model) {
+        model.addAttribute("product", new Product());
         return "products/new";
     }
 

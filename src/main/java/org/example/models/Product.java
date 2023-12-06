@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -15,14 +17,21 @@ import javax.validation.constraints.NotEmpty;
 public class Product {
 
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @NotEmpty(message = "Name should not be empty")
     @Column(name = "name")
     private String name;
+
     @NotEmpty(message = "Description should not be empty")
     @Column(name = "description")
     private String description;
+
     @NotEmpty(message = "Price should not be empty")
     @Column(name = "price")
     private double price;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
 }
